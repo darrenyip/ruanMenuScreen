@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+/* 重置基础样式 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 字体定义 */
+@font-face {
+  font-family: 'AliMama-DongFangDaKai';
+  src: url('@/assets/fonts/AlimamaDongFangDaKai-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AliMama-DongFangDaKai';
+  src: url('@/assets/fonts/AlimamaDongFangDaKai-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HanChan-DuanHeiSong';
+  src: url('@/assets/fonts/HanChan/ChillDuanHeiSongRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HanChan-DuanHeiSong';
+  src: url('@/assets/fonts/HanChan/ChillDuanHeiSongBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HanChan-DuanHeiSong-Soft';
+  src: url('@/assets/fonts/HanChan/ChillDuanHeiSongLight.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Frutiger-CE55-Roman';
+  src: url('@/assets/fonts/Frutiger CE 75 Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Frutiger CE 75 Black';
+  src: url('@/assets/fonts/Frutiger CE 75 Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'HanChan-DuanHeiSong', sans-serif;
+  line-height: 1.5;
+}
+
+/* 字体系统类 */
+.title-font {
+  font-family: 'AliMama-DongFangDaKai', serif;
+  font-weight: bold;
+}
+
+.body-font {
+  font-family: 'HanChan-DuanHeiSong', sans-serif;
+}
+
+.body-font-bold {
+  font-family: 'HanChan-DuanHeiSong', sans-serif;
+  font-weight: bold;
+}
+
+.body-font-soft {
+  font-family: 'HanChan-DuanHeiSong-Soft', sans-serif;
+}
+
+.en-font {
+  font-family: 'Frutiger-CE55-Roman', sans-serif;
+}
+
+/* 移除了之前的自定义样式 */
