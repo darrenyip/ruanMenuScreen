@@ -1,7 +1,12 @@
 <template>
   <div class="menu-content">
     <div v-if="loading" class="loading body-font">加载中...</div>
-    <div v-else-if="error" class="error body-font">{{ error }}</div>
+    <div v-else-if="error" class="error body-font">
+      <div>{{ error }}</div>
+      <div v-if="noDataError" class="no-data-hint">
+        <p>今日菜单暂未发布，请稍后再来查看</p>
+      </div>
+    </div>
     <template v-else>
       <div class="menu-grid">
         <!-- 荤菜区域 -->
@@ -106,9 +111,26 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  noDataError: {
+    type: Boolean,
+    default: false,
+  },
 })
 </script>
 
 <style scoped>
 @import '../styles/menu.css';
+
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: #f56c6c;
+  font-size: 1.2rem;
+}
+
+.no-data-hint {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #909399;
+}
 </style>

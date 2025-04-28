@@ -1,7 +1,12 @@
 <template>
   <div class="menu other-menu">
     <MenuHeader />
-    <OtherMenuContent :menuItems="menuItems" :loading="loading" :error="error" />
+    <MenuContent
+      :menuItems="menuItems"
+      :loading="loading"
+      :error="error"
+      :noDataError="noDataError"
+    />
     <MenuFooter />
   </div>
 </template>
@@ -10,7 +15,7 @@
 import { onMounted, computed, onBeforeUnmount } from 'vue'
 import { useMenuStore } from '@/stores/menu'
 import MenuHeader from '@/components/MenuHeader.vue'
-import OtherMenuContent from '@/components/OtherMenuContent.vue'
+import MenuContent from '@/components/MenuContent.vue'
 import MenuFooter from '@/components/MenuFooter.vue'
 
 const menuStore = useMenuStore()
@@ -37,10 +42,13 @@ const loading = computed(() => menuStore.loading)
 // 计算属性：错误信息
 const error = computed(() => menuStore.error)
 
+// 计算属性：是否是"无数据"错误
+const noDataError = computed(() => menuStore.noDataError)
+
 // 组件挂载时加载数据并启动自动刷新
 onMounted(async () => {
   try {
-    await menuStore.fetchMenu(today, 'other')
+    await menuStore.fetchMenu(today, 'soup')
     // 启动自动刷新（每3分钟刷新一次）
     menuStore.startAutoRefresh()
   } catch (err) {

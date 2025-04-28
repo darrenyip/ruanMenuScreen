@@ -6,6 +6,7 @@ export const useMenuStore = defineStore('menu', {
     currentMenu: null,
     loading: false,
     error: null,
+    noDataError: false, // 新增标志：是否是"无数据"错误
     lastEditedType: null,
     lastFetchTime: {
       lunch: 0,
@@ -28,6 +29,7 @@ export const useMenuStore = defineStore('menu', {
         this.lastFetchTime[type] = now // 更新请求时间
         this.loading = true
         this.error = null
+        this.noDataError = false // 重置无数据错误标志
 
         // 使用更新后的API获取菜单数据
         const menuData = await menuApi.fetchMenu(date, type)
@@ -36,27 +38,32 @@ export const useMenuStore = defineStore('menu', {
           loadTime: Date.now(),
         }
       } catch (error) {
-        this.error = error.message || '获取菜单失败'
+        console.error(`菜单加载失败: ${error.message}`)
 
-        // 设置为空数据
-        const emptyItems = {
-          meat: [],
-          halfMeat: [],
-          vegetable: [],
-          staple: [],
-          soup: [],
-          drink: [],
+        // 区分"无数据"错误和其他错误
+        if (error.isNoDataError) {
+          this.error = `暂无${date}的${type}菜单数据`
+          this.noDataError = true
+        } else {
+          this.error = `无法加载菜单数据: ${error.message}`
+          this.noDataError = false
         }
 
+        // 设置一个空的菜单结构，确保UI不会崩溃
         this.currentMenu = {
           menuId: '',
           date,
           type,
-          items: emptyItems,
+          items: {
+            meat: [],
+            halfMeat: [],
+            vegetable: [],
+            staple: [],
+            soup: [],
+            drink: [],
+          },
           loadTime: Date.now(),
         }
-
-        throw error
       } finally {
         this.loading = false
       }
@@ -69,6 +76,7 @@ export const useMenuStore = defineStore('menu', {
       try {
         this.loading = true
         this.error = null
+        this.noDataError = false
         return await menuApi.fetchRecentMenus()
       } catch (error) {
         this.error = error.message || '获取最近菜单失败'
@@ -94,6 +102,11 @@ export const useMenuStore = defineStore('menu', {
             ...menuData,
             loadTime: Date.now(),
           }
+
+          // 清除之前的错误
+          this.error = null
+          this.noDataError = false
+
           console.log(`[Store] 已更新${menuType}菜单数据`)
         }
       }, interval)

@@ -128,7 +128,10 @@ export const menuApi = {
       })
 
       if (menuList.items.length === 0) {
-        throw new Error(`没有找到${date}的${type}菜单`)
+        // 修改：创建特殊的NoMenuDataError，而不是普通的Error
+        const error = new Error(`没有找到${date}的${type}菜单`)
+        error.isNoDataError = true
+        throw error
       }
 
       const menu = menuList.items[0]
@@ -186,6 +189,9 @@ export const menuApi = {
    */
   setupAutoRefresh: (callback, interval = 3 * 60 * 1000) => {
     let timerId = null
+    let consecutiveErrors = 0
+    const maxConsecutiveErrors = 3
+    let currentInterval = interval
 
     // 刷新菜单的函数
     const refreshMenu = async () => {
@@ -200,6 +206,10 @@ export const menuApi = {
           // 获取菜单数据
           const menuData = await menuApi.fetchMenu(today, menuType)
 
+          // 请求成功，重置错误计数和刷新间隔
+          consecutiveErrors = 0
+          currentInterval = interval
+
           // 执行回调
           if (typeof callback === 'function') {
             callback(menuType, menuData)
@@ -208,6 +218,28 @@ export const menuApi = {
           console.log(`[${new Date().toLocaleTimeString()}] 自动刷新${menuType}菜单成功`)
         } catch (error) {
           console.error(`[${new Date().toLocaleTimeString()}] 自动刷新菜单失败:`, error)
+
+          // 如果是"无数据"错误，暂时增加刷新间隔
+          if (error.isNoDataError) {
+            consecutiveErrors++
+
+            // 根据连续错误次数增加刷新间隔
+            if (consecutiveErrors > maxConsecutiveErrors) {
+              // 如果连续多次出现"无数据"，延长刷新间隔（比如15分钟）
+              if (currentInterval !== 15 * 60 * 1000) {
+                currentInterval = 15 * 60 * 1000
+                console.log(
+                  `[${new Date().toLocaleTimeString()}] 连续多次无菜单数据，延长刷新间隔至15分钟`,
+                )
+
+                // 更新定时器
+                if (timerId !== null) {
+                  clearInterval(timerId)
+                  timerId = setInterval(refreshMenu, currentInterval)
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -216,7 +248,7 @@ export const menuApi = {
     refreshMenu()
 
     // 设置定时器
-    timerId = setInterval(refreshMenu, interval)
+    timerId = setInterval(refreshMenu, currentInterval)
 
     // 返回用于停止定时刷新的方法
     return {

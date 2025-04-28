@@ -1,7 +1,12 @@
 <template>
   <div class="menu lunch-menu">
     <MenuHeader />
-    <MenuContent :menuItems="menuItems" :loading="loading" :error="error" />
+    <MenuContent
+      :menuItems="menuItems"
+      :loading="loading"
+      :error="error"
+      :noDataError="noDataError"
+    />
     <MenuFooter />
   </div>
 </template>
@@ -36,6 +41,9 @@ const loading = computed(() => menuStore.loading)
 
 // 计算属性：错误信息
 const error = computed(() => menuStore.error)
+
+// 计算属性：是否是"无数据"错误
+const noDataError = computed(() => menuStore.noDataError)
 
 // 组件挂载时加载数据并启动自动刷新
 onMounted(async () => {
