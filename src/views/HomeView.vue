@@ -15,8 +15,6 @@
 
 <style scoped>
 .home {
-  width: 2160px;
-  height: 3840px;
   display: flex;
   flex-direction: column;
   justify-content: center;

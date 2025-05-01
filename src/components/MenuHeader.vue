@@ -9,7 +9,7 @@
 
     <h1 class="en-font today-title">TODAY DISHES</h1>
     <h1 class="chinese-title title-font">
-      今日<span class="en-font letter-spacing-1">MENUS</span>菜品
+      今日 <span class="en-font letter-spacing-1">MENUS</span> 菜品
     </h1>
   </div>
 </template>
