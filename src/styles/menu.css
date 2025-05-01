@@ -1,7 +1,6 @@
 /* 菜单基础样式 */
 .menu {
   display: flex;
-  height: 100%;
   flex-direction: column;
   background-color: #fff;
   color: #000;
@@ -12,7 +11,7 @@
 @media screen and (min-width: 1920px) and (max-width: 2559px) {
   .menu {
     width: 1080px;
-    height: 1920px;
+    height: 100vh;
   }
 }
 
@@ -20,7 +19,7 @@
 @media screen and (min-width: 2560px) and (max-width: 3839px) {
   .menu {
     width: 1440px;
-    height: 2560px;
+    height: 100vh;
   }
 }
 
@@ -28,13 +27,13 @@
 @media screen and (min-width: 3840px) {
   .menu {
     width: 2160px;
-    height: 3840px;
+    height: 100vh;
   }
 }
 
 /* 标题区域 */
 .menu-header {
-  height: 19.53%;
+  height: 19.53vh;
   text-align: center;
   background-color: #cd3c31;
   color: white;
@@ -107,7 +106,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 69.53%;
+  min-height: 69.53vh;
   position: relative;
 }
 
@@ -218,7 +217,7 @@
 
 /* 底部区域 */
 .menu-footer {
-  height: 10.94%;
+  height: 10.94vh;
   background-color: #cd3c31;
   color: white;
   padding: 15px 45px;
