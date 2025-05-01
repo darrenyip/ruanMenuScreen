@@ -30,34 +30,33 @@
 }
 
 .meat-image {
-  width: 630px;
+  width: 480px;
   top: -30%;
   left: 56px;
   transform: rotate(-4deg);
 }
 
 .carrot-image {
-  width: 440px;
+  width: 370px;
   top: -44%;
   right: 11%;
   transform: rotate(1deg);
 }
 
 .tomato-image {
-  width: 290px;
+  width: 220px;
   bottom: -16%;
   left: 4%;
 }
 
 .shrimp-image {
-  width: 380px;
+  width: 300px;
   bottom: -15%;
-  right: 3%;
-  transform: rotate(-5deg);
+  right: 5%;
 }
 
 .menu-header h1 {
-  font-size: 170px;
+  font-size: 150px;
   line-height: 1.05;
   margin: 0;
   font-weight: bold;

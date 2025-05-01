@@ -25,7 +25,7 @@ body {
 #app {
   margin: 0 auto;
   position: relative;
-  height: 100dvh;
-  width: 100dvw;
+  height: 100vh;
+  width: 100vw;
 }
 </style>
