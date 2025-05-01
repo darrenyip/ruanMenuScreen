@@ -1,17 +1,40 @@
 /* 菜单基础样式 */
 .menu {
-  width: 1080px;
-  height: 1920px;
   display: flex;
+  height: 100%;
   flex-direction: column;
   background-color: #fff;
   color: #000;
   font-family: 'SimHei', '黑体', Arial, sans-serif;
 }
 
+/* 1080p 屏幕 (1920x1080) */
+@media screen and (min-width: 1920px) and (max-width: 2559px) {
+  .menu {
+    width: 1080px;
+    height: 1920px;
+  }
+}
+
+/* 2K 屏幕 (2560x1440) */
+@media screen and (min-width: 2560px) and (max-width: 3839px) {
+  .menu {
+    width: 1440px;
+    height: 2560px;
+  }
+}
+
+/* 4K 屏幕 (3840x2160) */
+@media screen and (min-width: 3840px) {
+  .menu {
+    width: 2160px;
+    height: 3840px;
+  }
+}
+
 /* 标题区域 */
 .menu-header {
-  height: 375px;
+  height: 19.53%;
   text-align: center;
   background-color: #cd3c31;
   color: white;
@@ -84,6 +107,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 69.53%;
+  position: relative;
 }
 
 .loading,
@@ -102,6 +127,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  height: 100%;
+  position: relative;
 }
 
 /* 菜单行 */
@@ -110,9 +137,9 @@
   grid-template-columns: 265px 4fr 1fr;
   align-items: center;
   padding: 0 30px;
-  height: calc((1920px - 375px - 210px) / 11); /* 屏幕高度减去header和footer高度，再除以11行 */
-  overflow: hidden; /* 防止内容溢出 */
-  border-bottom: 1px solid black; /* 添加黑色底部边框 */
+  overflow: hidden;
+  border-bottom: 1px solid black;
+  position: relative;
 }
 
 /* 类型容器 */
@@ -191,7 +218,7 @@
 
 /* 底部区域 */
 .menu-footer {
-  height: 210px;
+  height: 10.94%;
   background-color: #cd3c31;
   color: white;
   padding: 15px 45px;

@@ -23,9 +23,9 @@ body {
 }
 
 #app {
-  width: 2160px;
-  height: 3840px;
   margin: 0 auto;
   position: relative;
+  height: 100dvh;
+  width: 100dvw;
 }
 </style>

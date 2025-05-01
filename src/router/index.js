@@ -15,11 +15,6 @@ const router = createRouter({
       component: () => import('../views/LunchMenuView.vue'),
     },
     {
-      path: '/lunch-menu-512',
-      name: 'lunchMenu512',
-      component: () => import('../views/LunchMenuView512.vue'),
-    },
-    {
       path: '/dinner-menu',
       name: 'dinnerMenu',
       component: () => import('../views/DinnerMenuView.vue'),
