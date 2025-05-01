@@ -1,7 +1,12 @@
 <template>
   <div class="menu-content">
     <div v-if="loading" class="loading body-font">加载中...</div>
-    <div v-else-if="error" class="error body-font">{{ error }}</div>
+    <div v-else-if="error" class="error body-font">
+      <div>{{ error }}</div>
+      <div v-if="noDataError" class="no-data-hint">
+        <p>今日菜单暂未发布，请稍后再来查看</p>
+      </div>
+    </div>
     <template v-else>
       <div class="menu-grid">
         <!-- 炖汤区域 -->
@@ -16,11 +21,11 @@
               <template v-if="menuItems.soup[0].hasMultipleSizes">
                 <div class="price-container">
                   <div class="price-item">
-                    <span class="size-label">小</span>
+                    <span class="size-label">小份</span>
                     {{ Math.floor(menuItems.soup[0].smallPrice) }}
                   </div>
                   <div class="price-item">
-                    <span class="size-label">大</span>
+                    <span class="size-label">大份</span>
                     {{ Math.floor(menuItems.soup[0].largePrice) }}
                   </div>
                 </div>
@@ -44,11 +49,11 @@
               <template v-if="dish.hasMultipleSizes">
                 <div class="price-container">
                   <div class="price-item">
-                    <span class="size-label">小</span>
+                    <span class="size-label">小份</span>
                     {{ Math.floor(dish.smallPrice) }}
                   </div>
                   <div class="price-item">
-                    <span class="size-label">大</span>
+                    <span class="size-label">大份</span>
                     {{ Math.floor(dish.largePrice) }}
                   </div>
                 </div>
@@ -77,11 +82,11 @@
               <template v-if="menuItems.staple[0].hasMultipleSizes">
                 <div class="price-container">
                   <div class="price-item">
-                    <span class="size-label">小</span>
+                    <span class="size-label">小份</span>
                     {{ Math.floor(menuItems.staple[0].smallPrice) }}
                   </div>
                   <div class="price-item">
-                    <span class="size-label">大</span>
+                    <span class="size-label">大份</span>
                     {{ Math.floor(menuItems.staple[0].largePrice) }}
                   </div>
                 </div>
@@ -210,6 +215,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  noDataError: {
+    type: Boolean,
+    default: false,
+  },
 })
 </script>
 
@@ -249,8 +258,7 @@ const props = defineProps({
 
 .price-item {
   display: flex;
-  align-items: baseline;
-  margin-left: 25px;
+  margin-left: 30px;
 }
 
 .price-item:first-child {
@@ -258,13 +266,12 @@ const props = defineProps({
 }
 
 .size-label {
-  font-size: 90px;
+  font-size: 40px;
   margin-right: 10px;
   font-family: 'AliMama-DongFangDaKai', serif;
-}
-
-/* 调整菜单行的布局 */
-.menu-row {
-  grid-template-columns: 530px 4fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

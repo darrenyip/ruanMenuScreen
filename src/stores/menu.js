@@ -11,7 +11,7 @@ export const useMenuStore = defineStore('menu', {
     lastFetchTime: {
       lunch: 0,
       dinner: 0,
-      soup: 0,
+      other: 0,
     },
     autoRefreshController: null, // 用于控制自动刷新
   }),

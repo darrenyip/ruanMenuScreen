@@ -110,7 +110,7 @@ export const menuApi = {
   /**
    * 获取指定日期和类型的菜单
    * @param {string} date 日期，格式为YYYY-MM-DD
-   * @param {string} type 菜单类型：lunch, dinner, soup
+   * @param {string} type 菜单类型：lunch, dinner,
    * @returns {Promise<Object>} 格式化的菜单数据
    */
   fetchMenu: async (date, type) => {
