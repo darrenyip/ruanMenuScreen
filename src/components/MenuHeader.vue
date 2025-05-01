@@ -8,7 +8,9 @@
     <img src="@/assets/images/shrimp.svg" alt="虾" class="decor-image shrimp-image" />
 
     <h1 class="en-font today-title">TODAY DISHES</h1>
-    <h1 class="chinese-title title-font">今日 <span class="en-font">MENUS</span> 菜品</h1>
+    <h1 class="chinese-title title-font">
+      今日<span class="en-font letter-spacing-1">MENUS</span>菜品
+    </h1>
   </div>
 </template>
 
@@ -18,4 +20,8 @@
 
 <style scoped>
 @import '../styles/menu.css';
+
+.letter-spacing-1 {
+  letter-spacing: 1px;
+}
 </style>
