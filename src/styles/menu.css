@@ -56,20 +56,15 @@
 }
 
 .menu-header h1 {
-  font-size: 150px;
+  font-size: 160px;
   line-height: 1.05;
   margin: 0;
   font-weight: bold;
   -webkit-text-stroke: 1px black;
-  text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000,
-    2px 2px 4px rgba(0, 0, 0, 0.3);
+
   position: relative;
   z-index: 2;
-  letter-spacing: 0px;
+  letter-spacing: -5px;
 }
 
 .today-title {
@@ -86,7 +81,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 69.53%;
   position: relative;
 }
 
@@ -113,12 +107,17 @@
 /* 菜单行 */
 .menu-row {
   display: grid;
-  grid-template-columns: 24.54% 4fr 1fr;
+  grid-template-columns: 3fr 5fr 2fr;
   align-items: center;
   padding: 0 2.78%;
   overflow: hidden;
   border-bottom: 1px solid black;
   position: relative;
+  height: 150px;
+}
+
+.menu-row:last-child {
+  border-bottom: none;
 }
 
 /* 类型容器 */
@@ -131,7 +130,7 @@
 
 /* 菜品类型名称 */
 .type-name {
-  font-size: 75px;
+  font-size: 95px;
   font-weight: bold;
   white-space: nowrap;
   margin-right: 8px;
@@ -139,11 +138,12 @@
 
 /* 英文类型名称 */
 .type-en {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   line-height: 1.2;
   display: flex;
   flex-direction: column;
+  padding-left: 15px;
 }
 
 .type-en > div {
@@ -170,7 +170,7 @@
 
 /* 菜品名称 */
 .dish-name {
-  font-size: 75px;
+  font-size: 95px;
   padding-left: 35px;
 }
 
@@ -186,7 +186,7 @@
 
 /* 菜品价格 */
 .dish-price {
-  font-size: 75px;
+  font-size: 95px;
   font-weight: bold;
   text-align: right;
   display: flex;
@@ -216,19 +216,19 @@
 }
 
 .mushroom-image {
-  width: 205px;
-  top: 44%;
+  width: 295px;
+  top: 30%;
   left: 16%;
 }
 
 .vege-image {
-  width: 250px;
+  width: 400px;
   bottom: 16%;
-  left: 43%;
+  left: 41%;
 }
 
 .corn-image {
-  width: 210px;
+  width: 300px;
   bottom: 42%;
   right: 2%;
 }
@@ -241,7 +241,7 @@
 }
 
 .logo-image {
-  width: 110px;
+  width: 130px;
   height: auto;
 }
 
@@ -267,11 +267,12 @@
 }
 
 .flour-image {
-  width: 30px;
+  width: 34px;
   height: auto;
 }
 .footer-text {
-  font-size: 30px;
+  font-size: 45px;
+  letter-spacing: -2px;
 }
 
 /* 字体样式 */
