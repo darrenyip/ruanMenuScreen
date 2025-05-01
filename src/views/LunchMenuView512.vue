@@ -176,8 +176,8 @@ onBeforeUnmount(() => {
 @import '../styles/menu.css';
 
 .lunch-menu-512 {
-  width: 100%;
-  height: 100%;
+  width: 512px;
+  height: 896px;
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -185,12 +185,11 @@ onBeforeUnmount(() => {
   font-family: 'SimHei', '黑体', Arial, sans-serif;
   overflow: hidden;
   position: relative;
-  font-size: 16px; /* 基础字体大小 */
 }
 
 /* 标题区域 */
 .menu-header {
-  height: 20%;
+  height: 180px;
   text-align: center;
   background-color: #cd3c31;
   color: white;
@@ -210,34 +209,34 @@ onBeforeUnmount(() => {
 }
 
 .meat-image {
-  width: 23.4%;
+  width: 120px;
   top: -30%;
   left: 20px;
   transform: rotate(-4deg);
 }
 
 .carrot-image {
-  width: 15.6%;
+  width: 80px;
   top: -44%;
   right: 11%;
   transform: rotate(1deg);
 }
 
 .tomato-image {
-  width: 11.7%;
+  width: 60px;
   bottom: -16%;
   left: 4%;
 }
 
 .shrimp-image {
-  width: 13.7%;
+  width: 70px;
   bottom: -5%;
   right: 3%;
   transform: rotate(-5deg);
 }
 
 .menu-header h1 {
-  font-size: 1.5rem;
+  font-size: 24px;
   margin: 0;
   font-weight: bold;
   -webkit-text-stroke: 1px black;
@@ -256,7 +255,7 @@ onBeforeUnmount(() => {
 }
 
 .chinese-title {
-  font-size: 1.75rem;
+  font-size: 28px;
 }
 
 /* 菜单内容区域 */
@@ -265,14 +264,14 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding: 1.2% 2.4%;
+  padding: 10px 20px;
 }
 
 .loading,
 .error {
-  font-size: 1rem;
+  font-size: 16px;
   text-align: center;
-  margin-top: 2.4%;
+  margin-top: 20px;
 }
 
 .error {
@@ -289,10 +288,10 @@ onBeforeUnmount(() => {
 /* 菜单行 */
 .menu-row {
   display: grid;
-  grid-template-columns: 23.4% 1fr 11.7%;
+  grid-template-columns: 120px 1fr 60px;
   align-items: center;
-  padding: 1%;
-  min-height: 4.7%;
+  padding: 8px;
+  min-height: 40px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -303,20 +302,20 @@ onBeforeUnmount(() => {
 }
 
 .type-en-pt-2 {
-  padding-top: 0.5%;
+  padding-top: 4px;
 }
 
 /* 菜品类型名称 */
 .type-name {
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: bold;
   white-space: nowrap;
-  margin-right: 1.6%;
+  margin-right: 8px;
 }
 
 /* 英文类型名称 */
 .type-en {
-  font-size: 0.75rem;
+  font-size: 12px;
   font-weight: bold;
   line-height: 1.2;
 }
@@ -342,13 +341,13 @@ onBeforeUnmount(() => {
 
 /* 菜品名称 */
 .dish-name {
-  font-size: 1rem;
-  padding-left: 2%;
+  font-size: 16px;
+  padding-left: 10px;
 }
 
 /* 菜品价格 */
 .dish-price {
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: bold;
   text-align: right;
   display: flex;
@@ -358,10 +357,10 @@ onBeforeUnmount(() => {
 
 /* 底部区域 */
 .menu-footer {
-  height: 13.4%;
+  height: 120px;
   background-color: #cd3c31;
   color: white;
-  padding: 1.8%;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -377,19 +376,19 @@ onBeforeUnmount(() => {
 }
 
 .mushroom-image {
-  width: 11.7%;
+  width: 60px;
   top: 44%;
   left: 16%;
 }
 
 .vege-image {
-  width: 13.7%;
+  width: 70px;
   bottom: 16%;
   left: 43%;
 }
 
 .corn-image {
-  width: 12.7%;
+  width: 65px;
   bottom: 42%;
   right: 2%;
 }
@@ -402,8 +401,8 @@ onBeforeUnmount(() => {
 }
 
 .logo-image {
-  width: 7.8%;
-  height: 7.8%;
+  width: 40px;
+  height: 40px;
 }
 
 .slogan-container {
@@ -421,17 +420,17 @@ onBeforeUnmount(() => {
 .flour-line {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 0.5%;
+  margin-bottom: 4px;
 }
 
 .flour-image {
-  width: 3.9%;
-  height: 3.9%;
+  width: 20px;
+  height: 20px;
 }
 
 .footer-text {
-  font-size: 0.875rem;
-  margin: 0.2% 0;
+  font-size: 14px;
+  margin: 2px 0;
   line-height: 1.2;
 }
 </style>

@@ -125,12 +125,10 @@ const props = defineProps({
   text-align: center;
   padding: 2rem;
   color: #f56c6c;
-  font-size: 1.2rem;
 }
 
 .no-data-hint {
   margin-top: 1rem;
-  font-size: 1rem;
   color: #909399;
 }
 </style>
