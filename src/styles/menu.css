@@ -106,7 +106,7 @@
 /* 菜单行 */
 .menu-row {
   display: grid;
-  grid-template-columns: 3fr 5fr 2fr;
+  grid-template-columns: 440px 5fr 2fr;
   align-items: center;
   padding: 0 2.78%;
   overflow: hidden;
