@@ -91,6 +91,7 @@ function organizeMenuItemsByCategory(menuItems) {
         hasMultipleSizes: dish.hasMultipleSizes,
         smallPrice: dish.smallPrice,
         largePrice: dish.largePrice,
+        sortOrder: item.sortOrder || 9999, // 使用菜品的sortOrder，如果不存在则给一个很大的默认值
       }
 
       // 确保类别存在，然后添加项目
@@ -98,6 +99,11 @@ function organizeMenuItemsByCategory(menuItems) {
         result[category].push(displayItem)
       }
     }
+  })
+
+  // 对每个类别的菜品按照sortOrder升序排序
+  Object.keys(result).forEach((category) => {
+    result[category].sort((a, b) => a.sortOrder - b.sortOrder)
   })
 
   return result
