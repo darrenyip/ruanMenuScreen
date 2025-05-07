@@ -31,7 +31,7 @@
                 </div>
               </template>
               <template v-else>
-                <div class="price-container single-price">
+                <div class="price-container">
                   {{ Math.floor(menuItems.soup[0].price) }}
                 </div>
               </template>
@@ -59,7 +59,7 @@
                 </div>
               </template>
               <template v-else>
-                <div class="price-container single-price">
+                <div class="price-container">
                   {{ Math.floor(dish.price) }}
                 </div>
               </template>
@@ -92,7 +92,7 @@
                 </div>
               </template>
               <template v-else>
-                <div class="price-container single-price">
+                <div class="price-container">
                   {{ Math.floor(menuItems.staple[0].price) }}
                 </div>
               </template>
@@ -120,7 +120,7 @@
                 </div>
               </template>
               <template v-else>
-                <div class="price-container single-price">
+                <div class="price-container">
                   {{ Math.floor(dish.price) }}
                 </div>
               </template>
@@ -150,7 +150,7 @@
                 </div>
               </template>
               <template v-else>
-                <div class="price-container single-price">
+                <div class="price-container">
                   {{ Math.floor(menuItems.drink[0].price) }}
                 </div>
               </template>
@@ -178,7 +178,7 @@
                 </div>
               </template>
               <template v-else>
-                <div class="price-container single-price">
+                <div class="price-container">
                   {{ Math.floor(dish.price) }}
                 </div>
               </template>
@@ -249,11 +249,6 @@ const props = defineProps({
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-}
-
-.single-price {
-  /* 将单一价格和多规格价格中的"小"价格对齐 */
-  padding-right: 120px; /* 调整此值以匹配对齐 */
 }
 
 .price-item {

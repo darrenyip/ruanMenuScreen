@@ -165,7 +165,7 @@
 
 /* 菜品名称 */
 .dish-name {
-  font-size: 115px;
+  font-size: 105px;
   padding-left: 35px;
 }
 
@@ -181,7 +181,7 @@
 
 /* 菜品价格 */
 .dish-price {
-  font-size: 115px;
+  font-size: 105px;
   font-weight: bold;
   text-align: right;
   display: flex;
