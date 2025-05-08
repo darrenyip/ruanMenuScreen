@@ -19,7 +19,9 @@
               <div class="type-name title-font">炖汤</div>
               <div class="type-en en-font type-en-pt-2">SOUP</div>
             </div>
-            <div class="dish-name alimama-font">{{ menuItems.soup[0].name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(menuItems.soup[0].name)">
+              {{ menuItems.soup[0].name }}
+            </div>
             <div class="dish-price frutiger-black">
               <template v-if="menuItems.soup[0].hasMultipleSizes">
                 <div class="price-container">
@@ -47,7 +49,9 @@
             class="menu-row soup-item"
           >
             <div class="type-container"></div>
-            <div class="dish-name alimama-font">{{ dish.name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
+              {{ dish.name }}
+            </div>
             <div class="dish-price frutiger-black">
               <template v-if="dish.hasMultipleSizes">
                 <div class="price-container">
@@ -80,7 +84,9 @@
                 <div>FOOD</div>
               </div>
             </div>
-            <div class="dish-name alimama-font">{{ menuItems.staple[0].name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(menuItems.staple[0].name)">
+              {{ menuItems.staple[0].name }}
+            </div>
             <div class="dish-price frutiger-black">
               <template v-if="menuItems.staple[0].hasMultipleSizes">
                 <div class="price-container">
@@ -108,7 +114,9 @@
             class="menu-row staple-item"
           >
             <div class="type-container"></div>
-            <div class="dish-name alimama-font">{{ dish.name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
+              {{ dish.name }}
+            </div>
             <div class="dish-price frutiger-black">
               <template v-if="dish.hasMultipleSizes">
                 <div class="price-container">
@@ -138,7 +146,9 @@
               <div class="type-name title-font">饮料</div>
               <div class="type-en en-font type-en-pt-2">DRINK</div>
             </div>
-            <div class="dish-name alimama-font">{{ menuItems.drink[0].name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(menuItems.drink[0].name)">
+              {{ menuItems.drink[0].name }}
+            </div>
             <div class="dish-price frutiger-black">
               <template v-if="menuItems.drink[0].hasMultipleSizes">
                 <div class="price-container">
@@ -166,7 +176,9 @@
             class="menu-row drink-item"
           >
             <div class="type-container"></div>
-            <div class="dish-name alimama-font">{{ dish.name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
+              {{ dish.name }}
+            </div>
             <div class="dish-price frutiger-black">
               <template v-if="dish.hasMultipleSizes">
                 <div class="price-container">
@@ -196,6 +208,20 @@
 <script setup>
 import { defineProps, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useMenuStore } from '@/stores/menu'
+
+// 根据文本长度决定使用哪个类
+const getDishNameClass = (text) => {
+  if (!text) return ''
+  const length = text.length
+  if (length > 15) {
+    return 'dish-name-super-long'
+  } else if (length > 10) {
+    return 'dish-name-extra-long'
+  } else if (length > 6) {
+    return 'dish-name-long'
+  }
+  return ''
+}
 
 // 定义组件接收的属性
 const props = defineProps({

@@ -115,9 +115,9 @@ import { useMenuStore } from '@/stores/menu'
 const getDishNameClass = (text) => {
   if (!text) return ''
   const length = text.length
-  if (length > 12) {
+  if (length > 15) {
     return 'dish-name-super-long'
-  } else if (length > 8) {
+  } else if (length > 10) {
     return 'dish-name-extra-long'
   } else if (length > 6) {
     return 'dish-name-long'
