@@ -85,9 +85,10 @@
 
 .loading,
 .error {
-  font-size: 48px;
   text-align: center;
   margin-top: 100px;
+  font-size: 100px;
+  padding: 0px 140px;
 }
 
 .error {

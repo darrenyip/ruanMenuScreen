@@ -14,6 +14,7 @@ export const useMenuStore = defineStore('menu', {
       other: 0,
     },
     autoRefreshController: null, // 用于控制自动刷新
+    refreshInterval: 3 * 60 * 1000, // 默认刷新间隔（3分钟）
   }),
 
   actions: {
@@ -91,6 +92,9 @@ export const useMenuStore = defineStore('menu', {
      * @param {number} interval 刷新间隔，单位为毫秒，默认为3分钟
      */
     startAutoRefresh(interval = 3 * 60 * 1000) {
+      // 保存刷新间隔
+      this.refreshInterval = interval
+
       // 如果已经有自动刷新控制器，先停止它
       this.stopAutoRefresh()
 
@@ -112,6 +116,13 @@ export const useMenuStore = defineStore('menu', {
       }, interval)
 
       console.log('已启动自动刷新菜单功能')
+    },
+
+    /**
+     * 获取当前设置的刷新间隔（单位：秒）
+     */
+    getRefreshIntervalInSeconds() {
+      return Math.floor(this.refreshInterval / 1000)
     },
 
     /**

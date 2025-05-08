@@ -3,8 +3,11 @@
     <div v-if="loading" class="loading body-font">加载中...</div>
     <div v-else-if="error" class="error body-font">
       <div>{{ error }}</div>
-      <div v-if="noDataError" class="no-data-hint">
-        <p>今日菜单暂未发布，请稍后再来查看</p>
+      <div class="no-data-hint">
+        <p v-if="noDataError">今日菜单暂未发布，请稍后再来查看</p>
+        <p v-if="countdownTime > 0" class="countdown">
+          将在 <span class="countdown-time">{{ formatTime(countdownTime) }}</span> 后自动刷新
+        </p>
       </div>
     </div>
     <template v-else>
@@ -191,7 +194,8 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, ref, onMounted, onUnmounted, watch } from 'vue'
+import { useMenuStore } from '@/stores/menu'
 
 // 定义组件接收的属性
 const props = defineProps({
@@ -219,6 +223,84 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+})
+
+// 获取菜单 store
+const menuStore = useMenuStore()
+
+// 倒计时相关逻辑
+const countdownTime = ref(menuStore.getRefreshIntervalInSeconds()) // 使用 store 中的刷新间隔
+let countdownTimer = null
+
+// 格式化时间为分:秒格式
+const formatTime = (seconds) => {
+  const mins = Math.floor(seconds / 60)
+  const secs = seconds % 60
+  return `${mins}:${secs < 10 ? '0' + secs : secs}`
+}
+
+// 刷新数据
+const refreshData = async () => {
+  // 获取当前日期
+  const today = new Date().toISOString().split('T')[0]
+
+  // 获取当前菜单类型（从store中获取）
+  const menuType = menuStore.currentMenu?.type || 'other'
+
+  // 重新获取数据
+  await menuStore.fetchMenu(today, menuType)
+  console.log(`[倒计时结束] 重新加载${menuType}菜单`)
+}
+
+// 启动倒计时
+const startCountdown = () => {
+  // 清除可能存在的旧定时器
+  if (countdownTimer) {
+    clearInterval(countdownTimer)
+  }
+
+  // 使用 store 中的刷新间隔
+  countdownTime.value = menuStore.getRefreshIntervalInSeconds()
+
+  // 设置新的定时器
+  countdownTimer = setInterval(() => {
+    if (countdownTime.value > 0) {
+      countdownTime.value--
+    } else {
+      // 时间到，清除定时器
+      clearInterval(countdownTimer)
+
+      // 触发刷新
+      refreshData()
+
+      // 重新启动倒计时
+      startCountdown()
+    }
+  }, 1000)
+}
+
+// 监听错误状态变化
+onMounted(() => {
+  if (props.error) {
+    startCountdown()
+  }
+})
+
+// 监听props变化
+watch(
+  () => props.error,
+  (newValue) => {
+    if (newValue) {
+      startCountdown()
+    }
+  },
+)
+
+// 组件卸载时清除定时器
+onUnmounted(() => {
+  if (countdownTimer) {
+    clearInterval(countdownTimer)
+  }
 })
 </script>
 
@@ -268,5 +350,16 @@ const props = defineProps({
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* 倒计时样式 */
+.countdown {
+  margin-top: 20px;
+  font-size: 140px;
+}
+
+.countdown-time {
+  font-weight: bold;
+  color: #409eff;
 }
 </style>
