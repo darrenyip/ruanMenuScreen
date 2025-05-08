@@ -19,7 +19,9 @@
               <div class="type-name title-font">荤菜</div>
               <div class="type-en en-font type-en-pt-2">MEAT</div>
             </div>
-            <div class="dish-name alimama-font">{{ menuItems.meat[0].name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(menuItems.meat[0].name)">
+              {{ menuItems.meat[0].name }}
+            </div>
             <div class="dish-price frutiger-black">{{ Math.floor(menuItems.meat[0].price) }}</div>
           </div>
 
@@ -29,7 +31,9 @@
             class="menu-row meat-item"
           >
             <div class="type-container"></div>
-            <div class="dish-name alimama-font">{{ dish.name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
+              {{ dish.name }}
+            </div>
             <div class="dish-price frutiger-black">{{ Math.floor(dish.price) }}</div>
           </div>
         </template>
@@ -44,7 +48,12 @@
                 <div>MEAT MIX</div>
               </div>
             </div>
-            <div class="dish-name alimama-font">{{ menuItems.halfMeat[0].name }}</div>
+            <div
+              class="dish-name alimama-font"
+              :class="getDishNameClass(menuItems.halfMeat[0].name)"
+            >
+              {{ menuItems.halfMeat[0].name }}
+            </div>
             <div class="dish-price frutiger-black">
               {{ Math.floor(menuItems.halfMeat[0].price) }}
             </div>
@@ -56,7 +65,9 @@
             class="menu-row half-meat-item"
           >
             <div class="type-container"></div>
-            <div class="dish-name alimama-font">{{ dish.name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
+              {{ dish.name }}
+            </div>
             <div class="dish-price frutiger-black">{{ Math.floor(dish.price) }}</div>
           </div>
         </template>
@@ -68,7 +79,12 @@
               <div class="type-name title-font">素菜</div>
               <div class="type-en en-font type-en-pt-2">VEGGIE</div>
             </div>
-            <div class="dish-name alimama-font">{{ menuItems.vegetable[0].name }}</div>
+            <div
+              class="dish-name alimama-font"
+              :class="getDishNameClass(menuItems.vegetable[0].name)"
+            >
+              {{ menuItems.vegetable[0].name }}
+            </div>
             <div class="dish-price frutiger-black">
               {{ Math.floor(menuItems.vegetable[0].price) }}
             </div>
@@ -80,7 +96,9 @@
             class="menu-row vege-item"
           >
             <div class="type-container"></div>
-            <div class="dish-name alimama-font">{{ dish.name }}</div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
+              {{ dish.name }}
+            </div>
             <div class="dish-price frutiger-black">{{ Math.floor(dish.price) }}</div>
           </div>
         </template>
@@ -92,6 +110,20 @@
 <script setup>
 import { defineProps, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useMenuStore } from '@/stores/menu'
+
+// 根据文本长度决定使用哪个类
+const getDishNameClass = (text) => {
+  if (!text) return ''
+  const length = text.length
+  if (length > 12) {
+    return 'dish-name-super-long'
+  } else if (length > 8) {
+    return 'dish-name-extra-long'
+  } else if (length > 6) {
+    return 'dish-name-long'
+  }
+  return ''
+}
 
 // 定义组件接收的属性
 const props = defineProps({

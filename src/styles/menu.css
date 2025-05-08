@@ -168,6 +168,23 @@
 .dish-name {
   font-size: 105px;
   padding-left: 35px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* 根据文本长度自适应的字体大小 */
+.dish-name-long {
+  font-size: 85px;
+}
+
+.dish-name-extra-long {
+  font-size: 65px;
+}
+
+.dish-name-super-long {
+  font-size: 50px;
 }
 
 .alimama-font {
