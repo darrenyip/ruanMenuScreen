@@ -49,7 +49,7 @@ const noDataError = computed(() => menuStore.noDataError)
 onMounted(async () => {
   try {
     await menuStore.fetchMenu(today, 'other')
-    // 启动自动刷新（每3分钟刷新一次）
+    // 启动自动刷新（每1分钟刷新一次）
     menuStore.startAutoRefresh()
   } catch (err) {
     console.error('加载其他菜单失败:', err)

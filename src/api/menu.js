@@ -190,14 +190,15 @@ export const menuApi = {
   /**
    * 设置定时刷新菜单的功能
    * @param {Function} callback 刷新菜单后的回调函数，接收参数：menuType, menuData
-   * @param {number} interval 刷新间隔，单位为毫秒，默认为3分钟
+   * @param {number} interval 刷新间隔，单位为毫秒，默认为1分钟
    * @returns {object} 包含停止定时刷新的方法
    */
-  setupAutoRefresh: (callback, interval = 3 * 60 * 1000) => {
+  setupAutoRefresh: (callback, interval = 1 * 60 * 1000) => {
     let timerId = null
     let consecutiveErrors = 0
     const maxConsecutiveErrors = 3
     let currentInterval = interval
+    const errorRetryInterval = 5 * 1000 // 错误重试间隔（5秒）
 
     // 刷新菜单的函数
     const refreshMenu = async () => {
@@ -222,10 +223,16 @@ export const menuApi = {
           }
 
           console.log(`[${new Date().toLocaleTimeString()}] 自动刷新${menuType}菜单成功`)
+
+          // 请求成功后，重置定时器为正常间隔（1分钟）
+          if (timerId !== null) {
+            clearInterval(timerId)
+            timerId = setInterval(refreshMenu, currentInterval)
+          }
         } catch (error) {
           console.error(`[${new Date().toLocaleTimeString()}] 自动刷新菜单失败:`, error)
 
-          // 如果是"无数据"错误，暂时增加刷新间隔
+          // 如果是"无数据"错误
           if (error.isNoDataError) {
             consecutiveErrors++
 
@@ -244,6 +251,16 @@ export const menuApi = {
                   timerId = setInterval(refreshMenu, currentInterval)
                 }
               }
+            }
+          } else {
+            // 对于其他类型的错误，设置短时间重试（5秒）
+            currentInterval = errorRetryInterval
+            console.log(`[${new Date().toLocaleTimeString()}] 请求失败，将在5秒后重试`)
+
+            // 更新定时器
+            if (timerId !== null) {
+              clearInterval(timerId)
+              timerId = setInterval(refreshMenu, currentInterval)
             }
           }
         }
