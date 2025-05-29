@@ -27,17 +27,17 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小份</span>
-                    {{ Math.floor(menuItems.soup[0].smallPrice) }}
+                    {{ menuItems.soup[0].smallPrice }}
                   </div>
                   <div class="price-item">
                     <span class="size-label">大份</span>
-                    {{ Math.floor(menuItems.soup[0].largePrice) }}
+                    {{ menuItems.soup[0].largePrice }}
                   </div>
                 </div>
               </template>
               <template v-else>
                 <div class="price-container">
-                  {{ Math.floor(menuItems.soup[0].price) }}
+                  {{ menuItems.soup[0].price }}
                 </div>
               </template>
             </div>
@@ -57,17 +57,17 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小份</span>
-                    {{ Math.floor(dish.smallPrice) }}
+                    {{ dish.smallPrice }}
                   </div>
                   <div class="price-item">
                     <span class="size-label">大份</span>
-                    {{ Math.floor(dish.largePrice) }}
+                    {{ dish.largePrice }}
                   </div>
                 </div>
               </template>
               <template v-else>
                 <div class="price-container">
-                  {{ Math.floor(dish.price) }}
+                  {{ dish.price }}
                 </div>
               </template>
             </div>
@@ -92,17 +92,17 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小份</span>
-                    {{ Math.floor(menuItems.staple[0].smallPrice) }}
+                    {{ menuItems.staple[0].smallPrice }}
                   </div>
                   <div class="price-item">
                     <span class="size-label">大份</span>
-                    {{ Math.floor(menuItems.staple[0].largePrice) }}
+                    {{ menuItems.staple[0].largePrice }}
                   </div>
                 </div>
               </template>
               <template v-else>
                 <div class="price-container">
-                  {{ Math.floor(menuItems.staple[0].price) }}
+                  {{ menuItems.staple[0].price }}
                 </div>
               </template>
             </div>
@@ -122,17 +122,17 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小</span>
-                    {{ Math.floor(dish.smallPrice) }}
+                    {{ dish.smallPrice }}
                   </div>
                   <div class="price-item">
                     <span class="size-label">大</span>
-                    {{ Math.floor(dish.largePrice) }}
+                    {{ dish.largePrice }}
                   </div>
                 </div>
               </template>
               <template v-else>
                 <div class="price-container">
-                  {{ Math.floor(dish.price) }}
+                  {{ dish.price }}
                 </div>
               </template>
             </div>
@@ -154,17 +154,17 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小</span>
-                    {{ Math.floor(menuItems.drink[0].smallPrice) }}
+                    {{ menuItems.drink[0].smallPrice }}
                   </div>
                   <div class="price-item">
                     <span class="size-label">大</span>
-                    {{ Math.floor(menuItems.drink[0].largePrice) }}
+                    {{ menuItems.drink[0].largePrice }}
                   </div>
                 </div>
               </template>
               <template v-else>
                 <div class="price-container">
-                  {{ Math.floor(menuItems.drink[0].price) }}
+                  {{ menuItems.drink[0].price }}
                 </div>
               </template>
             </div>
@@ -184,17 +184,17 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小</span>
-                    {{ Math.floor(dish.smallPrice) }}
+                    {{ dish.smallPrice }}
                   </div>
                   <div class="price-item">
                     <span class="size-label">大</span>
-                    {{ Math.floor(dish.largePrice) }}
+                    {{ dish.largePrice }}
                   </div>
                 </div>
               </template>
               <template v-else>
                 <div class="price-container">
-                  {{ Math.floor(dish.price) }}
+                  {{ dish.price }}
                 </div>
               </template>
             </div>

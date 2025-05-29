@@ -22,7 +22,7 @@
             <div class="dish-name alimama-font" :class="getDishNameClass(menuItems.meat[0].name)">
               {{ menuItems.meat[0].name }}
             </div>
-            <div class="dish-price frutiger-black">{{ Math.floor(menuItems.meat[0].price) }}</div>
+            <div class="dish-price frutiger-black">{{ menuItems.meat[0].price }}</div>
           </div>
 
           <div
@@ -34,7 +34,7 @@
             <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
               {{ dish.name }}
             </div>
-            <div class="dish-price frutiger-black">{{ Math.floor(dish.price) }}</div>
+            <div class="dish-price frutiger-black">{{ dish.price }}</div>
           </div>
         </template>
 
@@ -55,7 +55,7 @@
               {{ menuItems.halfMeat[0].name }}
             </div>
             <div class="dish-price frutiger-black">
-              {{ Math.floor(menuItems.halfMeat[0].price) }}
+              {{ menuItems.halfMeat[0].price }}
             </div>
           </div>
 
@@ -68,7 +68,7 @@
             <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
               {{ dish.name }}
             </div>
-            <div class="dish-price frutiger-black">{{ Math.floor(dish.price) }}</div>
+            <div class="dish-price frutiger-black">{{ dish.price }}</div>
           </div>
         </template>
 
@@ -86,7 +86,7 @@
               {{ menuItems.vegetable[0].name }}
             </div>
             <div class="dish-price frutiger-black">
-              {{ Math.floor(menuItems.vegetable[0].price) }}
+              {{ menuItems.vegetable[0].price }}
             </div>
           </div>
 
@@ -99,7 +99,7 @@
             <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
               {{ dish.name }}
             </div>
-            <div class="dish-price frutiger-black">{{ Math.floor(dish.price) }}</div>
+            <div class="dish-price frutiger-black">{{ dish.price }}</div>
           </div>
         </template>
       </div>
