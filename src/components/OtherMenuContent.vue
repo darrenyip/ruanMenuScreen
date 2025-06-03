@@ -27,11 +27,11 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小份</span>
-                    {{ menuItems.soup[0].smallPrice }}
+                    <span class="frutiger-black">{{ menuItems.soup[0].smallPrice }}</span>
                   </div>
                   <div class="price-item">
                     <span class="size-label">大份</span>
-                    {{ menuItems.soup[0].largePrice }}
+                    <span class="frutiger-black">{{ menuItems.soup[0].largePrice }}</span>
                   </div>
                 </div>
               </template>
@@ -57,11 +57,11 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小份</span>
-                    {{ dish.smallPrice }}
+                    <span class="frutiger-black">{{ dish.smallPrice }}</span>
                   </div>
                   <div class="price-item">
                     <span class="size-label">大份</span>
-                    {{ dish.largePrice }}
+                    <span class="frutiger-black">{{ dish.largePrice }}</span>
                   </div>
                 </div>
               </template>
@@ -92,11 +92,11 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小份</span>
-                    {{ menuItems.staple[0].smallPrice }}
+                    <span class="frutiger-black">{{ menuItems.staple[0].smallPrice }}</span>
                   </div>
                   <div class="price-item">
                     <span class="size-label">大份</span>
-                    {{ menuItems.staple[0].largePrice }}
+                    <span class="frutiger-black">{{ menuItems.staple[0].largePrice }}</span>
                   </div>
                 </div>
               </template>
@@ -122,11 +122,11 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小</span>
-                    {{ dish.smallPrice }}
+                    <span class="frutiger-black">{{ dish.smallPrice }}</span>
                   </div>
                   <div class="price-item">
                     <span class="size-label">大</span>
-                    {{ dish.largePrice }}
+                    <span class="frutiger-black">{{ dish.largePrice }}</span>
                   </div>
                 </div>
               </template>
@@ -154,11 +154,11 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小</span>
-                    {{ menuItems.drink[0].smallPrice }}
+                    <span class="frutiger-black">{{ menuItems.drink[0].smallPrice }}</span>
                   </div>
                   <div class="price-item">
                     <span class="size-label">大</span>
-                    {{ menuItems.drink[0].largePrice }}
+                    <span class="frutiger-black">{{ menuItems.drink[0].largePrice }}</span>
                   </div>
                 </div>
               </template>
@@ -184,11 +184,11 @@
                 <div class="price-container">
                   <div class="price-item">
                     <span class="size-label">小</span>
-                    {{ dish.smallPrice }}
+                    <span class="frutiger-black">{{ dish.smallPrice }}</span>
                   </div>
                   <div class="price-item">
                     <span class="size-label">大</span>
-                    {{ dish.largePrice }}
+                    <span class="frutiger-black">{{ dish.largePrice }}</span>
                   </div>
                 </div>
               </template>

@@ -151,6 +151,11 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  displayMode: {
+    type: String,
+    default: 'all',
+    validator: (value) => ['all', 'meatAndHalfMeatOnly', 'vegetableOnly'].includes(value),
+  },
 })
 
 // 获取菜单 store

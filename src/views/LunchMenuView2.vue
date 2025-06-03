@@ -1,5 +1,5 @@
 <template>
-  <div class="menu lunch-menu">
+  <div class="menu lunch-menu-2">
     <MenuHeader />
     <MenuContent
       :menuItems="menuItems"
@@ -36,7 +36,7 @@ const totalDishCount = computed(() => {
 // 计算显示模式
 const displayMode = computed(() => {
   if (totalDishCount.value > 12) {
-    return 'meatAndHalfMeatOnly' // 第一屏只显示荤菜和半荤
+    return 'vegetableOnly' // 第二屏只显示素菜
   }
   return 'all' // 显示所有菜品
 })
@@ -52,11 +52,12 @@ const menuItems = computed(() => {
     drink: [],
   }
 
-  // 如果总数超过12个，第一屏只显示荤菜和半荤
+  // 如果总数超过12个，第二屏只显示素菜
   if (totalDishCount.value > 12) {
     return {
       ...items,
-      vegetable: [], // 不显示素菜
+      meat: [],
+      halfMeat: [],
     }
   }
 
@@ -92,7 +93,7 @@ onBeforeUnmount(() => {
 <style scoped>
 @import '../styles/menu.css';
 
-.lunch-menu {
-  /* 午餐菜单特定样式 */
+.lunch-menu-2 {
+  /* 午餐菜单第二屏特定样式 */
 }
 </style>

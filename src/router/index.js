@@ -15,9 +15,19 @@ const router = createRouter({
       component: () => import('../views/LunchMenuView.vue'),
     },
     {
+      path: '/lunch-menu-2',
+      name: 'lunchMenu2',
+      component: () => import('../views/LunchMenuView2.vue'),
+    },
+    {
       path: '/dinner-menu',
       name: 'dinnerMenu',
       component: () => import('../views/DinnerMenuView.vue'),
+    },
+    {
+      path: '/dinner-menu-2',
+      name: 'dinnerMenu2',
+      component: () => import('../views/DinnerMenuView2.vue'),
     },
     {
       path: '/other-menu',
