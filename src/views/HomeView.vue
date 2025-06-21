@@ -1,10 +1,21 @@
 <template>
   <div class="home">
     <h1>餐厅菜单导航</h1>
+
+    <h2>今日菜单</h2>
     <div class="menu-buttons">
       <router-link to="/lunch-menu" class="menu-btn lunch">午餐菜单</router-link>
       <router-link to="/dinner-menu" class="menu-btn dinner">晚餐菜单</router-link>
       <router-link to="/other-menu" class="menu-btn other">其他菜单</router-link>
+    </div>
+
+    <h2>明日菜单</h2>
+    <div class="menu-buttons">
+      <router-link to="/lunch-menu-tomorrow" class="menu-btn lunch-tomorrow">明日午餐</router-link>
+      <router-link to="/dinner-menu-tomorrow" class="menu-btn dinner-tomorrow"
+        >明日晚餐</router-link
+      >
+      <router-link to="/other-menu-tomorrow" class="menu-btn other-tomorrow">明日其他</router-link>
     </div>
   </div>
 </template>
@@ -25,8 +36,15 @@
 
 h1 {
   font-size: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   color: #333;
+}
+
+h2 {
+  font-size: 60px;
+  margin-bottom: 40px;
+  margin-top: 60px;
+  color: #555;
 }
 
 .menu-buttons {
@@ -34,6 +52,7 @@ h1 {
   flex-direction: column;
   gap: 80px;
   width: 70%;
+  margin-bottom: 60px;
 }
 
 .menu-btn {
@@ -63,5 +82,18 @@ h1 {
 
 .other {
   background-color: #006400;
+}
+
+/* 明日菜单按钮样式 - 使用稍微不同的色调 */
+.lunch-tomorrow {
+  background-color: #a0522d;
+}
+
+.dinner-tomorrow {
+  background-color: #6a0dad;
+}
+
+.other-tomorrow {
+  background-color: #228b22;
 }
 </style>

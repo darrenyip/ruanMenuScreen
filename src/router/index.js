@@ -34,6 +34,21 @@ const router = createRouter({
       name: 'otherMenu',
       component: () => import('../views/OtherMenuView.vue'),
     },
+    {
+      path: '/lunch-menu-tomorrow',
+      name: 'lunchMenuTomorrow',
+      component: () => import('../views/LunchMenuTomorrowView.vue'),
+    },
+    {
+      path: '/dinner-menu-tomorrow',
+      name: 'dinnerMenuTomorrow',
+      component: () => import('../views/DinnerMenuTomorrowView.vue'),
+    },
+    {
+      path: '/other-menu-tomorrow',
+      name: 'otherMenuTomorrow',
+      component: () => import('../views/OtherMenuTomorrowView.vue'),
+    },
   ],
 })
 
