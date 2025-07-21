@@ -86,6 +86,12 @@
             </div>
             <div class="dish-name alimama-font" :class="getDishNameClass(menuItems.staple[0].name)">
               {{ menuItems.staple[0].name }}
+              <img
+                v-if="menuItems.staple[0].isSam"
+                :src="samsLogo"
+                class="sams-logo"
+                alt="山姆会员店"
+              />
             </div>
             <div class="dish-price frutiger-black">
               <template v-if="menuItems.staple[0].hasMultipleSizes">
@@ -116,6 +122,7 @@
             <div class="type-container"></div>
             <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
               {{ dish.name }}
+              <img v-if="dish.isSam" :src="samsLogo" class="sams-logo" alt="山姆会员店" />
             </div>
             <div class="dish-price frutiger-black">
               <template v-if="dish.hasMultipleSizes">
@@ -208,6 +215,7 @@
 <script setup>
 import { defineProps, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useMenuStore } from '@/stores/menu'
+import samsLogo from '@/assets/images/sams.jpg'
 
 // 根据文本长度决定使用哪个类
 const getDishNameClass = (text) => {
@@ -387,5 +395,30 @@ onUnmounted(() => {
 .countdown-time {
   font-weight: bold;
   color: #409eff;
+}
+
+/* 山姆会员店 logo 样式 */
+.sams-logo {
+  display: inline-block;
+  width: 140px;
+  height: auto;
+  margin-left: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+/* 针对较长菜名的调整 */
+.dish-name-long .sams-logo,
+.dish-name-extra-long .sams-logo,
+.dish-name-super-long .sams-logo {
+  width: 100px;
+}
+
+/* 确保图片加载时不会导致布局跳动 */
+.dish-name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 </style>

@@ -91,8 +91,4 @@ onBeforeUnmount(() => {
 
 <style scoped>
 @import '../styles/menu.css';
-
-.lunch-menu {
-  /* 午餐菜单特定样式 */
-}
 </style>

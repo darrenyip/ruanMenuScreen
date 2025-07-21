@@ -21,6 +21,12 @@
             </div>
             <div class="dish-name alimama-font" :class="getDishNameClass(menuItems.meat[0].name)">
               {{ menuItems.meat[0].name }}
+              <img
+                v-if="menuItems.meat[0].isSam"
+                :src="samsLogo"
+                class="sams-logo"
+                alt="山姆会员店"
+              />
             </div>
             <div class="dish-price frutiger-black">{{ menuItems.meat[0].price }}</div>
           </div>
@@ -33,6 +39,7 @@
             <div class="type-container"></div>
             <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
               {{ dish.name }}
+              <img v-if="dish.isSam" :src="samsLogo" class="sams-logo" alt="山姆会员店" />
             </div>
             <div class="dish-price frutiger-black">{{ dish.price }}</div>
           </div>
@@ -53,6 +60,12 @@
               :class="getDishNameClass(menuItems.halfMeat[0].name)"
             >
               {{ menuItems.halfMeat[0].name }}
+              <img
+                v-if="menuItems.halfMeat[0].isSam"
+                :src="samsLogo"
+                class="sams-logo"
+                alt="山姆会员店"
+              />
             </div>
             <div class="dish-price frutiger-black">
               {{ menuItems.halfMeat[0].price }}
@@ -67,6 +80,7 @@
             <div class="type-container"></div>
             <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
               {{ dish.name }}
+              <img v-if="dish.isSam" :src="samsLogo" class="sams-logo" alt="山姆会员店" />
             </div>
             <div class="dish-price frutiger-black">{{ dish.price }}</div>
           </div>
@@ -84,6 +98,12 @@
               :class="getDishNameClass(menuItems.vegetable[0].name)"
             >
               {{ menuItems.vegetable[0].name }}
+              <img
+                v-if="menuItems.vegetable[0].isSam"
+                :src="samsLogo"
+                class="sams-logo"
+                alt="山姆会员店"
+              />
             </div>
             <div class="dish-price frutiger-black">
               {{ menuItems.vegetable[0].price }}
@@ -98,6 +118,7 @@
             <div class="type-container"></div>
             <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
               {{ dish.name }}
+              <img v-if="dish.isSam" :src="samsLogo" class="sams-logo" alt="山姆会员店" />
             </div>
             <div class="dish-price frutiger-black">{{ dish.price }}</div>
           </div>
@@ -110,6 +131,7 @@
 <script setup>
 import { defineProps, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useMenuStore } from '@/stores/menu'
+import samsLogo from '@/assets/images/sams.jpg'
 
 // 根据文本长度决定使用哪个类
 const getDishNameClass = (text) => {
@@ -259,5 +281,30 @@ onUnmounted(() => {
 .countdown-time {
   font-weight: bold;
   color: #409eff;
+}
+
+/* 山姆会员店 logo 样式 */
+.sams-logo {
+  display: inline-block;
+  width: 140px;
+  height: auto;
+  margin-left: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+/* 针对较长菜名的调整 */
+.dish-name-long .sams-logo,
+.dish-name-extra-long .sams-logo,
+.dish-name-super-long .sams-logo {
+  width: 50px;
+}
+
+/* 确保图片加载时不会导致布局跳动 */
+.dish-name {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 </style>
