@@ -30,18 +30,27 @@ const getTomorrow = () => {
 
 const tomorrow = getTomorrow()
 
-// 计算属性：获取菜单项（显示所有内容，不做限制）
+// 计算属性：获取菜单项（不包括套餐）
 const menuItems = computed(() => {
-  return (
-    menuStore.currentMenu?.items || {
-      meat: [],
-      halfMeat: [],
-      vegetable: [],
-      staple: [],
-      soup: [],
-      drink: [],
-    }
-  )
+  const items = menuStore.currentMenu?.items || {
+    meat: [],
+    halfMeat: [],
+    vegetable: [],
+    staple: [],
+    soup: [],
+    drink: [],
+    combo: [],
+  }
+
+  // 返回除套餐外的所有菜品
+  return {
+    meat: items.meat || [],
+    halfMeat: items.halfMeat || [],
+    vegetable: items.vegetable || [],
+    staple: items.staple || [],
+    soup: items.soup || [],
+    drink: items.drink || [],
+  }
 })
 
 // 计算属性：加载状态

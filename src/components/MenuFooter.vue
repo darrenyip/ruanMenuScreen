@@ -6,9 +6,9 @@
     <img src="@/assets/images/vege.svg" alt="蔬菜" class="footer-decor-image vege-image" />
     <img src="@/assets/images/corn.svg" alt="玉米" class="footer-decor-image corn-image" />
 
-    <div class="logo">
+    <router-link to="/" class="logo">
       <img src="@/assets/images/ruan_logo_white.svg" alt="轻" class="logo-image" />
-    </div>
+    </router-link>
     <div class="slogan-container">
       <div class="slogan body-font-soft">
         <div class="flour-line">
@@ -22,9 +22,23 @@
 </template>
 
 <script setup>
-// 底部组件不需要特定的逻辑
+import { RouterLink } from 'vue-router'
 </script>
 
 <style scoped>
 @import '../styles/menu.css';
+
+.logo {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.logo:active {
+  transform: scale(0.95);
+}
 </style>

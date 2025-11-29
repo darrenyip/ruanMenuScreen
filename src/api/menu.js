@@ -76,6 +76,7 @@ function organizeMenuItemsByCategory(menuItems) {
     staple: [],
     soup: [],
     drink: [],
+    combo: [],
   }
 
   menuItems.forEach((item) => {

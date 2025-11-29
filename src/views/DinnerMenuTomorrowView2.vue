@@ -1,12 +1,12 @@
 <template>
-  <div class="menu lunch-menu-2">
+  <div class="menu dinner-menu-tomorrow-2">
     <MenuHeader />
     <MenuContent
       :menuItems="menuItems"
       :loading="loading"
       :error="error"
       :noDataError="noDataError"
-      :displayMode="displayMode"
+      :displayMode="'comboOnly'"
     />
     <MenuFooter />
   </div>
@@ -21,11 +21,14 @@ import MenuFooter from '@/components/MenuFooter.vue'
 
 const menuStore = useMenuStore()
 
-// 获取当前日期
-const today = new Date().toISOString().split('T')[0]
+// 获取明天的日期
+const getTomorrow = () => {
+  const tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  return tomorrow.toISOString().split('T')[0]
+}
 
-// 显示模式：只显示套餐
-const displayMode = computed(() => 'comboOnly')
+const tomorrow = getTomorrow()
 
 // 计算属性：获取菜单项（只显示套餐）
 const menuItems = computed(() => {
@@ -60,27 +63,28 @@ const error = computed(() => menuStore.error)
 // 计算属性：是否是"无数据"错误
 const noDataError = computed(() => menuStore.noDataError)
 
-// 组件挂载时加载数据并启动自动刷新
+// 组件挂载时加载数据（明日菜单不需要自动刷新）
 onMounted(async () => {
   try {
-    await menuStore.fetchMenu(today, 'lunch')
-    // 启动自动刷新（每1分钟刷新一次）
-    menuStore.startAutoRefresh()
+    // 先停止任何现有的自动刷新，避免与今日菜单的自动刷新冲突
+    menuStore.stopAutoRefresh()
+    await menuStore.fetchMenu(tomorrow, 'dinner')
   } catch (err) {
-    console.error('加载午餐菜单失败:', err)
+    console.error('加载明天晚餐套餐失败:', err)
   }
 })
 
-// 组件卸载前停止自动刷新
+// 组件卸载前清理（明日菜单页面不使用自动刷新）
 onBeforeUnmount(() => {
-  menuStore.stopAutoRefresh()
+  // 不需要停止自动刷新，因为我们没有启动它
 })
 </script>
 
 <style scoped>
 @import '../styles/menu.css';
 
-.lunch-menu-2 {
-  /* 午餐菜单第二屏特定样式 */
+.dinner-menu-tomorrow-2 {
+  /* 明天晚餐套餐特定样式 */
 }
 </style>
+
