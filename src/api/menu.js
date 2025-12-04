@@ -79,10 +79,15 @@ function organizeMenuItemsByCategory(menuItems) {
     combo: [],
   }
 
+  console.log('[DEBUG] 开始处理菜单项，共', menuItems.length, '项')
+
   menuItems.forEach((item) => {
     if (item.expand && item.expand.dish) {
       const dish = item.expand.dish
       const category = dish.category
+
+      // 调试：打印每个菜品的分类信息
+      console.log('[DEBUG] 菜品:', dish.name, '| 分类字段值:', JSON.stringify(category), '| 类型:', typeof category)
 
       const displayItem = {
         id: item.id,
@@ -98,7 +103,11 @@ function organizeMenuItemsByCategory(menuItems) {
       // 确保类别存在，然后添加项目
       if (result[category]) {
         result[category].push(displayItem)
+      } else {
+        console.warn('[DEBUG] 未知分类:', category, '| 菜品:', dish.name)
       }
+    } else {
+      console.warn('[DEBUG] 菜单项缺少 expand.dish:', item)
     }
   })
 
@@ -152,6 +161,10 @@ export const menuApi = {
 
       // 3. 按类别组织数据
       const organizedItems = organizeMenuItemsByCategory(menuItems)
+
+      // 调试：打印组织后的 combo 数据
+      console.log('[DEBUG] 组织后的数据 - combo 数量:', organizedItems.combo.length)
+      console.log('[DEBUG] 组织后的完整数据:', JSON.stringify(organizedItems, null, 2))
 
       // 4. 返回格式化的菜单数据
       return {
