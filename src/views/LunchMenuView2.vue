@@ -6,7 +6,7 @@
       :loading="loading"
       :error="error"
       :noDataError="noDataError"
-      :displayMode="displayMode"
+      :displayMode="'comboOnly'"
     />
     <MenuFooter />
   </div>
@@ -23,9 +23,6 @@ const menuStore = useMenuStore()
 
 // 获取当前日期
 const today = new Date().toISOString().split('T')[0]
-
-// 显示模式：只显示套餐
-const displayMode = computed(() => 'comboOnly')
 
 // 计算属性：获取菜单项（只显示套餐）
 const menuItems = computed(() => {
