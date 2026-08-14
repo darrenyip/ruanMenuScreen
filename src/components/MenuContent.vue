@@ -123,6 +123,37 @@
             <div class="dish-price frutiger-black">{{ dish.price }}</div>
           </div>
         </template>
+
+        <!-- 套餐区域 -->
+        <template v-if="menuItems.combo && menuItems.combo.length > 0">
+          <div class="menu-row combo-type">
+            <div class="type-container">
+              <div class="type-name title-font">套餐</div>
+              <div class="type-en en-font type-en-pt-2">COMBO</div>
+            </div>
+            <div
+              class="dish-name alimama-font"
+              :class="getDishNameClass(menuItems.combo[0].name)"
+            >
+              {{ menuItems.combo[0].name }}
+            </div>
+            <div class="dish-price frutiger-black">
+              {{ menuItems.combo[0].price }}
+            </div>
+          </div>
+
+          <div
+            v-for="(dish, index) in menuItems.combo.slice(1)"
+            :key="dish.id"
+            class="menu-row combo-item"
+          >
+            <div class="type-container"></div>
+            <div class="dish-name alimama-font" :class="getDishNameClass(dish.name)">
+              {{ dish.name }}
+            </div>
+            <div class="dish-price frutiger-black">{{ dish.price }}</div>
+          </div>
+        </template>
       </div>
     </template>
   </div>
@@ -159,6 +190,7 @@ const props = defineProps({
       staple: [],
       soup: [],
       drink: [],
+      combo: [],
     }),
   },
   loading: {
@@ -176,7 +208,7 @@ const props = defineProps({
   displayMode: {
     type: String,
     default: 'all',
-    validator: (value) => ['all', 'meatAndHalfMeatOnly', 'vegetableOnly'].includes(value),
+    validator: (value) => ['all', 'comboOnly'].includes(value),
   },
 })
 

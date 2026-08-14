@@ -24,24 +24,10 @@ const menuStore = useMenuStore()
 // 获取当前日期
 const today = new Date().toISOString().split('T')[0]
 
-// 计算总菜品数量
-const totalDishCount = computed(() => {
-  const menu = menuStore.currentMenu?.items || {}
-  const meatCount = menu.meat?.length || 0
-  const halfMeatCount = menu.halfMeat?.length || 0
-  const vegetableCount = menu.vegetable?.length || 0
-  return meatCount + halfMeatCount + vegetableCount
-})
+// 显示模式：只显示套餐
+const displayMode = computed(() => 'comboOnly')
 
-// 计算显示模式
-const displayMode = computed(() => {
-  if (totalDishCount.value > 12) {
-    return 'vegetableOnly' // 第二屏只显示素菜
-  }
-  return 'all' // 显示所有菜品
-})
-
-// 计算属性：获取菜单项
+// 计算属性：获取菜单项（只显示套餐）
 const menuItems = computed(() => {
   const items = menuStore.currentMenu?.items || {
     meat: [],
@@ -50,18 +36,19 @@ const menuItems = computed(() => {
     staple: [],
     soup: [],
     drink: [],
+    combo: [],
   }
 
-  // 如果总数超过12个，第二屏只显示素菜
-  if (totalDishCount.value > 12) {
-    return {
-      ...items,
-      meat: [],
-      halfMeat: [],
-    }
+  // 只返回套餐数据
+  return {
+    meat: [],
+    halfMeat: [],
+    vegetable: [],
+    staple: [],
+    soup: [],
+    drink: [],
+    combo: items.combo || [],
   }
-
-  return items
 })
 
 // 计算属性：加载状态

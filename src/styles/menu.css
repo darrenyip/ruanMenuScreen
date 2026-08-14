@@ -165,6 +165,12 @@
   background-color: #fff9ee;
 }
 
+/* 套餐样式 */
+.combo-type,
+.combo-item {
+  background-color: #fff9ee;
+}
+
 /* 菜品名称 */
 .dish-name {
   font-size: 105px;

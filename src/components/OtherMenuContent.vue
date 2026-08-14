@@ -78,7 +78,7 @@
         <template v-if="menuItems.staple && menuItems.staple.length > 0">
           <div class="menu-row staple-type">
             <div class="type-container">
-              <div class="type-name title-font">主食</div>
+              <div class="type-name title-font">主食/加料</div>
               <div class="type-en en-font type-en-pt-2">
                 <div>STAPLE</div>
                 <div>FOOD</div>
